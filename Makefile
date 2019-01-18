@@ -5,7 +5,7 @@ lsrc = $(wildcard $(IPREFIX)/src/lib/*.c)
 lobj = $(lsrc:$(IPREFIX)/src/lib/%.c=$(ODIR)/%.o)
 
 .PHONY: default
-default: $(ODIR)/libtestext.a
+default: $(ODIR)/libexttest.a
 
 $(ODIR):
 	mkdir -p $(ODIR)
@@ -13,7 +13,7 @@ $(ODIR):
 $(ODIR)/%.o: $(IPREFIX)/src/lib/%.c | $(ODIR)
 	$(CC) -c -o $@ $^
 
-$(ODIR)/libtestext.a: $(lobj)
+$(ODIR)/libexttest.a: $(lobj)
 	ar rcs $@ $^
 
 .PRECIOUS: $(ODIR)/%.o
