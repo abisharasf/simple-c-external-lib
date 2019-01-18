@@ -1,8 +1,8 @@
 IPREFIX ?=.
 ODIR ?= build
 
-lsrc = $(wildcard $(IPREFIX)/src/lib/*.c)
-lobj = $(lsrc:$(IPREFIX)/src/lib/%.c=$(ODIR)/%.o)
+lsrc = $(wildcard $(IPREFIX)/src/lib2/*.c)
+lobj = $(lsrc:$(IPREFIX)/src/lib2/%.c=$(ODIR)/%.o)
 
 .PHONY: default
 default: $(ODIR)/libexttest.a
@@ -10,7 +10,7 @@ default: $(ODIR)/libexttest.a
 $(ODIR):
 	mkdir -p $(ODIR)
 
-$(ODIR)/%.o: $(IPREFIX)/src/lib/%.c | $(ODIR)
+$(ODIR)/%.o: $(IPREFIX)/src/lib2/%.c | $(ODIR)
 	$(CC) -c -o $@ $^
 
 $(ODIR)/libexttest.a: $(lobj)
